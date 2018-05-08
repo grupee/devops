@@ -1,0 +1,21 @@
+version : '3'
+services :
+  mongodb :
+    image : mongo
+
+  www :
+    image : demo
+    ports :
+     - 80:80
+  
+  api :
+    image : demo-api
+    ports :
+     - 3000:3000
+    links :
+      - mongodb:mongodb
+  
+  jenkins :
+    image : jenkinsci/blueocean
+    ports :
+     - 8080:8080
