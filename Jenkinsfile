@@ -36,8 +36,9 @@ pipeline {
         }*/
         stage("deploy"){
             steps {
-                sshagent(['uat-server']){
+                sshagent(['core-server']){
                     sh "docker pull hello-world"
+                    //sh "core@167.99.237.229 docker pull hello-world"
                 }
             }
         }
