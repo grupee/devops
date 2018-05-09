@@ -37,7 +37,7 @@ pipeline {
         stage("deploy"){
             steps {
                 sshagent(['core-server']){
-                    sh "docker pull localhost:5000/nginx_devops"
+                    sh "docker pull al1605/al-nginx"
                     //sh "core@167.99.237.229 docker pull hello-world"
                 }
             }
