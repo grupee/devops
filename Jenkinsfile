@@ -20,5 +20,26 @@ pipeline {
                 sh "docker tag ${env.imageName} ${env.imageName}:1.${env.BUILD_NUMBER}"
             }
         }
+        /*stage("push Images"){
+            steps {
+                sh "docker login -u xxx -p xxx"
+                sh "docker push ${env.imageName}"
+            }
+        }*/
+        /*stage("push image docker hub"){
+            script{
+                docker.withReistry('https://registry.hub.docker.com', 'docker-id'){
+                    def image = docker.build ("${env.imageName}:1.${env.BUILD_NUMBER}")
+                    image.push()
+                }
+            }
+        }*/
+        stage("deploy"){
+            steps {
+                sshagent(['uat-server']){
+                    sh "echo 'xxx'"
+                }
+            }
+        }
     }
 }
